@@ -40,6 +40,7 @@ namespace VehicleHistory.UserInterface.Forms
             this.tsslDatabase = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.pMain = new System.Windows.Forms.Panel();
+            this.tcTabs = new System.Windows.Forms.TabControl();
             this.btnCurrentStatus = new System.Windows.Forms.Button();
             this.btnRefuelingHistory = new System.Windows.Forms.Button();
             this.btnServiceHistory = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@ namespace VehicleHistory.UserInterface.Forms
             this.tabControl1.SuspendLayout();
             this.tpGeneral.SuspendLayout();
             this.ssMain.SuspendLayout();
+            this.pMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -146,11 +148,26 @@ namespace VehicleHistory.UserInterface.Forms
             // 
             // pMain
             // 
+            this.pMain.Controls.Add(this.tcTabs);
             this.pMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pMain.Location = new System.Drawing.Point(0, 90);
             this.pMain.Name = "pMain";
             this.pMain.Size = new System.Drawing.Size(872, 437);
             this.pMain.TabIndex = 2;
+            // 
+            // tcTabs
+            // 
+            this.tcTabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tcTabs.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.tcTabs.ItemSize = new System.Drawing.Size(105, 21);
+            this.tcTabs.Location = new System.Drawing.Point(0, 0);
+            this.tcTabs.Name = "tcTabs";
+            this.tcTabs.SelectedIndex = 0;
+            this.tcTabs.Size = new System.Drawing.Size(872, 437);
+            this.tcTabs.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tcTabs.TabIndex = 0;
+            this.tcTabs.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tcTabs_DrawItem);
+            this.tcTabs.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tcTabs_MouseDown);
             // 
             // btnCurrentStatus
             // 
@@ -190,6 +207,7 @@ namespace VehicleHistory.UserInterface.Forms
             this.btnServiceHistory.Text = "Historia serwisowa";
             this.btnServiceHistory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnServiceHistory.UseVisualStyleBackColor = true;
+            this.btnServiceHistory.Click += new System.EventHandler(this.btnServiceHistory_Click);
             // 
             // btnVehicle
             // 
@@ -203,6 +221,7 @@ namespace VehicleHistory.UserInterface.Forms
             this.btnVehicle.Text = "Pojazdy";
             this.btnVehicle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnVehicle.UseVisualStyleBackColor = true;
+            this.btnVehicle.Click += new System.EventHandler(this.btnVehicle_Click);
             // 
             // MainForm
             // 
@@ -220,6 +239,7 @@ namespace VehicleHistory.UserInterface.Forms
             this.tpGeneral.ResumeLayout(false);
             this.ssMain.ResumeLayout(false);
             this.ssMain.PerformLayout();
+            this.pMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,5 +262,6 @@ namespace VehicleHistory.UserInterface.Forms
         private System.Windows.Forms.ToolStripStatusLabel tsslDatabase;
         private System.Windows.Forms.ToolStripStatusLabel tsslUser;
         private System.Windows.Forms.Panel pMain;
+        private System.Windows.Forms.TabControl tcTabs;
     }
 }
