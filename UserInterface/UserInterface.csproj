@@ -64,6 +64,7 @@
     <Compile Include="Forms\ServiceHistory\ServiceHistoryForm.Designer.cs">
       <DependentUpon>ServiceHistoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ResourcesHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\Cars\CarsForm.resx">
@@ -116,5 +117,12 @@
   <ItemGroup>
     <None Include="Resources\fuel2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close16.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

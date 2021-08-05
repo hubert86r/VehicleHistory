@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using VehicleHistory.UserInterface.Forms.Cars;
 using VehicleHistory.UserInterface.Forms.ServiceHistory;
+using VehicleHistory.UserInterface.Helpers;
 
 namespace VehicleHistory.UserInterface.Forms
 {
     public partial class MainForm : Form
     {
-        private string _closeButtonFullPath = @"C:\!! C#\Historia Pojazdów\Ikony\close16.png";
         private TabPage _tpCars;
         private TabPage _tpServiceHistory;
         public MainForm()
@@ -43,9 +43,15 @@ namespace VehicleHistory.UserInterface.Forms
 
         private void btnServiceHistory_Click(object sender, EventArgs e)
         {
-            _tpServiceHistory = new TabPage();
-            ServiceHistoryForm frm = new ServiceHistoryForm();
-            ShowFormInTabPage(_tpServiceHistory, frm);
+            if (ServiceHistoryForm.IsNull)
+            {
+                _tpServiceHistory = new TabPage();
+                ShowFormInTabPage(_tpServiceHistory, ServiceHistoryForm.Instance);
+            }
+            else
+            {
+                tcTabs.SelectedTab = _tpServiceHistory;
+            }
         }
 
         private void tcTabs_DrawItem(object sender, DrawItemEventArgs e)
@@ -55,7 +61,7 @@ namespace VehicleHistory.UserInterface.Forms
                 var tabPage = this.tcTabs.TabPages[e.Index];
                 var tabRect = this.tcTabs.GetTabRect(e.Index);               
                 
-                var closeImage = new Bitmap(_closeButtonFullPath);
+                var closeImage = new Bitmap($"{ResourcesHelper.ResourcesFilePath}\\{ResourcesHelper.closeButtonName}");
                     e.Graphics.DrawImage(closeImage,
                         (tabRect.Right - closeImage.Width),
                         tabRect.Top + (tabRect.Height - closeImage.Height) / 2);
@@ -73,7 +79,7 @@ namespace VehicleHistory.UserInterface.Forms
             {
                 var tabRect = this.tcTabs.GetTabRect(i);
                 tabRect.Inflate(-2, -2);
-                var closeImage = new Bitmap(_closeButtonFullPath);
+                var closeImage = new Bitmap($"{ResourcesHelper.ResourcesFilePath}\\{ResourcesHelper.closeButtonName}");
                 var imageRect = new Rectangle(
                     (tabRect.Right - closeImage.Width),
                     tabRect.Top + (tabRect.Height - closeImage.Height) / 2,

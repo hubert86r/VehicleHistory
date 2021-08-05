@@ -31,9 +31,13 @@ namespace VehicleHistory.UserInterface.Forms
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpGeneral = new System.Windows.Forms.TabPage();
+            this.btnCurrentStatus = new System.Windows.Forms.Button();
             this.splitter3 = new System.Windows.Forms.Splitter();
+            this.btnRefuelingHistory = new System.Windows.Forms.Button();
             this.splitter2 = new System.Windows.Forms.Splitter();
+            this.btnServiceHistory = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
+            this.btnVehicle = new System.Windows.Forms.Button();
             this.tpConfiguration = new System.Windows.Forms.TabPage();
             this.ssMain = new System.Windows.Forms.StatusStrip();
             this.tsslVersion = new System.Windows.Forms.ToolStripStatusLabel();
@@ -41,10 +45,6 @@ namespace VehicleHistory.UserInterface.Forms
             this.tsslUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.pMain = new System.Windows.Forms.Panel();
             this.tcTabs = new System.Windows.Forms.TabControl();
-            this.btnCurrentStatus = new System.Windows.Forms.Button();
-            this.btnRefuelingHistory = new System.Windows.Forms.Button();
-            this.btnServiceHistory = new System.Windows.Forms.Button();
-            this.btnVehicle = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tpGeneral.SuspendLayout();
             this.ssMain.SuspendLayout();
@@ -80,6 +80,19 @@ namespace VehicleHistory.UserInterface.Forms
             this.tpGeneral.Text = "Ogólne";
             this.tpGeneral.UseVisualStyleBackColor = true;
             // 
+            // btnCurrentStatus
+            // 
+            this.btnCurrentStatus.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnCurrentStatus.Image = global::VehicleHistory.UserInterface.Properties.Resources.fuel2;
+            this.btnCurrentStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCurrentStatus.Location = new System.Drawing.Point(492, 3);
+            this.btnCurrentStatus.Name = "btnCurrentStatus";
+            this.btnCurrentStatus.Size = new System.Drawing.Size(180, 55);
+            this.btnCurrentStatus.TabIndex = 6;
+            this.btnCurrentStatus.Text = "Aktualny status";
+            this.btnCurrentStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCurrentStatus.UseVisualStyleBackColor = true;
+            // 
             // splitter3
             // 
             this.splitter3.Location = new System.Drawing.Point(489, 3);
@@ -87,6 +100,19 @@ namespace VehicleHistory.UserInterface.Forms
             this.splitter3.Size = new System.Drawing.Size(3, 55);
             this.splitter3.TabIndex = 5;
             this.splitter3.TabStop = false;
+            // 
+            // btnRefuelingHistory
+            // 
+            this.btnRefuelingHistory.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnRefuelingHistory.Image = global::VehicleHistory.UserInterface.Properties.Resources.fuel1;
+            this.btnRefuelingHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRefuelingHistory.Location = new System.Drawing.Point(299, 3);
+            this.btnRefuelingHistory.Name = "btnRefuelingHistory";
+            this.btnRefuelingHistory.Size = new System.Drawing.Size(190, 55);
+            this.btnRefuelingHistory.TabIndex = 4;
+            this.btnRefuelingHistory.Text = "Historia tankowania";
+            this.btnRefuelingHistory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRefuelingHistory.UseVisualStyleBackColor = true;
             // 
             // splitter2
             // 
@@ -96,6 +122,20 @@ namespace VehicleHistory.UserInterface.Forms
             this.splitter2.TabIndex = 3;
             this.splitter2.TabStop = false;
             // 
+            // btnServiceHistory
+            // 
+            this.btnServiceHistory.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnServiceHistory.Image = global::VehicleHistory.UserInterface.Properties.Resources.service2;
+            this.btnServiceHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnServiceHistory.Location = new System.Drawing.Point(126, 3);
+            this.btnServiceHistory.Name = "btnServiceHistory";
+            this.btnServiceHistory.Size = new System.Drawing.Size(170, 55);
+            this.btnServiceHistory.TabIndex = 2;
+            this.btnServiceHistory.Text = "Historia serwisowa";
+            this.btnServiceHistory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnServiceHistory.UseVisualStyleBackColor = true;
+            this.btnServiceHistory.Click += new System.EventHandler(this.btnServiceHistory_Click);
+            // 
             // splitter1
             // 
             this.splitter1.Location = new System.Drawing.Point(123, 3);
@@ -103,6 +143,20 @@ namespace VehicleHistory.UserInterface.Forms
             this.splitter1.Size = new System.Drawing.Size(3, 55);
             this.splitter1.TabIndex = 1;
             this.splitter1.TabStop = false;
+            // 
+            // btnVehicle
+            // 
+            this.btnVehicle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnVehicle.Image = global::VehicleHistory.UserInterface.Properties.Resources.car3;
+            this.btnVehicle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVehicle.Location = new System.Drawing.Point(3, 3);
+            this.btnVehicle.Name = "btnVehicle";
+            this.btnVehicle.Size = new System.Drawing.Size(120, 55);
+            this.btnVehicle.TabIndex = 0;
+            this.btnVehicle.Text = "Pojazdy";
+            this.btnVehicle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVehicle.UseVisualStyleBackColor = true;
+            this.btnVehicle.Click += new System.EventHandler(this.btnVehicle_Click);
             // 
             // tpConfiguration
             // 
@@ -169,60 +223,6 @@ namespace VehicleHistory.UserInterface.Forms
             this.tcTabs.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tcTabs_DrawItem);
             this.tcTabs.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tcTabs_MouseDown);
             // 
-            // btnCurrentStatus
-            // 
-            this.btnCurrentStatus.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCurrentStatus.Image = global::VehicleHistory.UserInterface.Properties.Resources.fuel2;
-            this.btnCurrentStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCurrentStatus.Location = new System.Drawing.Point(492, 3);
-            this.btnCurrentStatus.Name = "btnCurrentStatus";
-            this.btnCurrentStatus.Size = new System.Drawing.Size(180, 55);
-            this.btnCurrentStatus.TabIndex = 6;
-            this.btnCurrentStatus.Text = "Aktualny status";
-            this.btnCurrentStatus.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCurrentStatus.UseVisualStyleBackColor = true;
-            // 
-            // btnRefuelingHistory
-            // 
-            this.btnRefuelingHistory.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnRefuelingHistory.Image = global::VehicleHistory.UserInterface.Properties.Resources.fuel1;
-            this.btnRefuelingHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRefuelingHistory.Location = new System.Drawing.Point(299, 3);
-            this.btnRefuelingHistory.Name = "btnRefuelingHistory";
-            this.btnRefuelingHistory.Size = new System.Drawing.Size(190, 55);
-            this.btnRefuelingHistory.TabIndex = 4;
-            this.btnRefuelingHistory.Text = "Historia tankowania";
-            this.btnRefuelingHistory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRefuelingHistory.UseVisualStyleBackColor = true;
-            // 
-            // btnServiceHistory
-            // 
-            this.btnServiceHistory.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnServiceHistory.Image = global::VehicleHistory.UserInterface.Properties.Resources.service2;
-            this.btnServiceHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServiceHistory.Location = new System.Drawing.Point(126, 3);
-            this.btnServiceHistory.Name = "btnServiceHistory";
-            this.btnServiceHistory.Size = new System.Drawing.Size(170, 55);
-            this.btnServiceHistory.TabIndex = 2;
-            this.btnServiceHistory.Text = "Historia serwisowa";
-            this.btnServiceHistory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnServiceHistory.UseVisualStyleBackColor = true;
-            this.btnServiceHistory.Click += new System.EventHandler(this.btnServiceHistory_Click);
-            // 
-            // btnVehicle
-            // 
-            this.btnVehicle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnVehicle.Image = global::VehicleHistory.UserInterface.Properties.Resources.car3;
-            this.btnVehicle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVehicle.Location = new System.Drawing.Point(3, 3);
-            this.btnVehicle.Name = "btnVehicle";
-            this.btnVehicle.Size = new System.Drawing.Size(120, 55);
-            this.btnVehicle.TabIndex = 0;
-            this.btnVehicle.Text = "Pojazdy";
-            this.btnVehicle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVehicle.UseVisualStyleBackColor = true;
-            this.btnVehicle.Click += new System.EventHandler(this.btnVehicle_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -231,6 +231,7 @@ namespace VehicleHistory.UserInterface.Forms
             this.Controls.Add(this.pMain);
             this.Controls.Add(this.ssMain);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
