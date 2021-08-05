@@ -12,9 +12,39 @@ namespace VehicleHistory.UserInterface.Forms.Cars
 {
     public partial class CarsForm : Form
     {
-        public CarsForm()
+        private static CarsForm _instance = null;
+
+        public static CarsForm Instance 
+        {
+            get 
+            {
+                if (_instance == null)
+                {
+                    _instance = new CarsForm();
+                }
+                return _instance;
+            }
+        }
+        public static bool IsNull
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        private CarsForm()
         {
             InitializeComponent();
+        }
+
+        private void CarsForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            _instance = null;
         }
     }
 }

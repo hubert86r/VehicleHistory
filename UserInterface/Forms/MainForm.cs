@@ -14,7 +14,9 @@ namespace VehicleHistory.UserInterface.Forms
 {
     public partial class MainForm : Form
     {
-        private string closeButtonFullPath = @"C:\!! C#\Historia Pojazdów\Ikony\close16.png";
+        private string _closeButtonFullPath = @"C:\!! C#\Historia Pojazdów\Ikony\close16.png";
+        private TabPage _tpCars;
+        private TabPage _tpServiceHistory;
         public MainForm()
         {
             InitializeComponent();
@@ -27,14 +29,23 @@ namespace VehicleHistory.UserInterface.Forms
 
         private void btnVehicle_Click(object sender, EventArgs e)
         {
-            CarsForm frm = new CarsForm();
-            ShowFormInTabPage(frm);
+            if (CarsForm.IsNull)
+            {
+                _tpCars = new TabPage();
+                ShowFormInTabPage(_tpCars, CarsForm.Instance);
+            }
+            else
+            {
+                tcTabs.SelectedTab = _tpCars;
+            }
+            
         }
 
         private void btnServiceHistory_Click(object sender, EventArgs e)
         {
+            _tpServiceHistory = new TabPage();
             ServiceHistoryForm frm = new ServiceHistoryForm();
-            ShowFormInTabPage(frm);
+            ShowFormInTabPage(_tpServiceHistory, frm);
         }
 
         private void tcTabs_DrawItem(object sender, DrawItemEventArgs e)
@@ -44,7 +55,7 @@ namespace VehicleHistory.UserInterface.Forms
                 var tabPage = this.tcTabs.TabPages[e.Index];
                 var tabRect = this.tcTabs.GetTabRect(e.Index);               
                 
-                var closeImage = new Bitmap(closeButtonFullPath);
+                var closeImage = new Bitmap(_closeButtonFullPath);
                     e.Graphics.DrawImage(closeImage,
                         (tabRect.Right - closeImage.Width),
                         tabRect.Top + (tabRect.Height - closeImage.Height) / 2);
@@ -62,7 +73,7 @@ namespace VehicleHistory.UserInterface.Forms
             {
                 var tabRect = this.tcTabs.GetTabRect(i);
                 tabRect.Inflate(-2, -2);
-                var closeImage = new Bitmap(closeButtonFullPath);
+                var closeImage = new Bitmap(_closeButtonFullPath);
                 var imageRect = new Rectangle(
                     (tabRect.Right - closeImage.Width),
                     tabRect.Top + (tabRect.Height - closeImage.Height) / 2,
@@ -70,15 +81,17 @@ namespace VehicleHistory.UserInterface.Forms
                     closeImage.Height);
                 if (imageRect.Contains(e.Location))
                 {
+                    var frm = tcTabs.TabPages[i].Controls[0] as Form;
+                    frm.Close();
+
                     this.tcTabs.TabPages.RemoveAt(i);
                     break;
                 }
             }
         }
 
-        private void ShowFormInTabPage(Form frm)
+        private void ShowFormInTabPage(TabPage tpTab, Form frm)
         {
-            TabPage tpTab = new TabPage();
             tcTabs.Controls.Add(tpTab);
 
             tpTab.Text = frm.Text;
