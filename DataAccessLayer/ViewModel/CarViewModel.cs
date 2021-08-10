@@ -15,7 +15,7 @@ namespace VehicleHistory.DataAccessLayer.ViewModel
             get { return name.ToUpper(); }
             set { name = value; }
         }
-        public int Brand { get; set; }
-        public int Model { get; set; }
+        public string Brand { get; set; }
+        public string Model { get; set; }
     }
 }

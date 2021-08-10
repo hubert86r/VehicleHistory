@@ -37,15 +37,15 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvCars = new System.Windows.Forms.DataGridView();
-            this.carViewModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colModel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsCars = new System.Windows.Forms.BindingSource(this.components);
             this.tlpCars.SuspendLayout();
             this.pCars.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carViewModelBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsCars)).BeginInit();
             this.SuspendLayout();
             // 
             // tlpCars
@@ -139,7 +139,7 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             this.colName,
             this.colBrand,
             this.colModel});
-            this.dgvCars.DataSource = this.carViewModelBindingSource;
+            this.dgvCars.DataSource = this.bsCars;
             this.dgvCars.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvCars.Location = new System.Drawing.Point(3, 43);
             this.dgvCars.Name = "dgvCars";
@@ -147,12 +147,9 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             this.dgvCars.RowHeadersVisible = false;
             this.dgvCars.RowHeadersWidth = 51;
             this.dgvCars.RowTemplate.Height = 24;
+            this.dgvCars.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCars.Size = new System.Drawing.Size(794, 404);
             this.dgvCars.TabIndex = 1;
-            // 
-            // carViewModelBindingSource
-            // 
-            this.carViewModelBindingSource.DataSource = typeof(VehicleHistory.DataAccessLayer.ViewModel.CarViewModel);
             // 
             // colId
             // 
@@ -191,6 +188,10 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             this.colModel.ReadOnly = true;
             this.colModel.Width = 125;
             // 
+            // bsCars
+            // 
+            this.bsCars.DataSource = typeof(VehicleHistory.DataAccessLayer.ViewModel.CarViewModel);
+            // 
             // CarsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -203,7 +204,7 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             this.tlpCars.ResumeLayout(false);
             this.pCars.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCars)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carViewModelBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsCars)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -217,7 +218,7 @@ namespace VehicleHistory.UserInterface.Forms.Cars
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnRefresch;
         private System.Windows.Forms.DataGridView dgvCars;
-        private System.Windows.Forms.BindingSource carViewModelBindingSource;
+        private System.Windows.Forms.BindingSource bsCars;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBrand;
