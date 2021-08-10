@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using VehicleHistory.DataAccessLayer.Models;
 using VehicleHistory.DataAccessLayer.Models.Dictionaries;
 using VehicleHistory.DataAccessLayer.ViewModel;
+using VehicleHistory.UserInterface.Helpers;
 
 namespace VehicleHistory.UserInterface.Forms.Cars
 {
@@ -98,22 +99,8 @@ namespace VehicleHistory.UserInterface.Forms.Cars
                     EngineCode = "890765"
                 }
             };
-            IList<CarViewModel> fakeCarsViewModel = new List<CarViewModel>();
-
-            foreach (CarModel fakeCarModel in fakeCarsModel)
-            {
-                CarViewModel fakeCarViewModel = new CarViewModel();
-                fakeCarViewModel.Id = fakeCarModel.Id;
-                fakeCarViewModel.Name = fakeCarModel.Name;
-                fakeCarViewModel.Model = fakeCarModel.Model;
-                fakeCarViewModel.Brand = fakeCarModel.Brand.ToString();
-
-                fakeCarsViewModel.Add(fakeCarViewModel);
-
-            }
-
-            return fakeCarsViewModel;
-        }
+            return MappingHelper.MapCarModelToCarViewModel(fakeCarsModel);
+        }   
 
         private void CarsForm_FormClosed(object sender, FormClosedEventArgs e)
         {
