@@ -106,5 +106,11 @@ namespace VehicleHistory.UserInterface.Forms.Cars
         {
             _instance = null;
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            CarAddForm frm = new CarAddForm();
+            frm.ShowDialog();
+        }
     }
 }

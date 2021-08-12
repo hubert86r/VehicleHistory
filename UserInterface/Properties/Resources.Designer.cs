@@ -83,6 +83,16 @@ namespace VehicleHistory.UserInterface.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap car2 {
+            get {
+                object obj = ResourceManager.GetObject("car2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap car3 {
             get {
                 object obj = ResourceManager.GetObject("car3", resourceCulture);

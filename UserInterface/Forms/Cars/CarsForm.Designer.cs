@@ -126,6 +126,7 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             this.btnAdd.Text = "Dodaj";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dgvCars
             // 

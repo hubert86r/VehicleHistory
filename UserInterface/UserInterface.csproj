@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Cars\CarAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Cars\CarAddForm.Designer.cs">
+      <DependentUpon>CarAddForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Cars\CarsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,10 +70,19 @@
     <Compile Include="Forms\ServiceHistory\ServiceHistoryForm.Designer.cs">
       <DependentUpon>ServiceHistoryForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Template\TemplateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Template\TemplateForm.Designer.cs">
+      <DependentUpon>TemplateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\MappingHelper.cs" />
     <Compile Include="Helpers\ResourcesHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Cars\CarAddForm.resx">
+      <DependentUpon>CarAddForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Cars\CarsForm.resx">
       <DependentUpon>CarsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -76,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ServiceHistory\ServiceHistoryForm.resx">
       <DependentUpon>ServiceHistoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Template\TemplateForm.resx">
+      <DependentUpon>TemplateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -139,6 +157,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\refresh24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\car2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
