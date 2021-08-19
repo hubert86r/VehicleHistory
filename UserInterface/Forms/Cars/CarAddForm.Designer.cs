@@ -29,8 +29,10 @@ namespace VehicleHistory.UserInterface.Forms.Cars
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gbGeneral = new System.Windows.Forms.GroupBox();
             this.cbBrand = new System.Windows.Forms.ComboBox();
+            this.bsBrand = new System.Windows.Forms.BindingSource(this.components);
             this.txtGeneration = new System.Windows.Forms.TextBox();
             this.txtModel = new System.Windows.Forms.TextBox();
             this.lblGeneration = new System.Windows.Forms.Label();
@@ -44,6 +46,7 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             this.lblName = new System.Windows.Forms.Label();
             this.gbTechnical = new System.Windows.Forms.GroupBox();
             this.cbFuelType = new System.Windows.Forms.ComboBox();
+            this.bsFuelType = new System.Windows.Forms.BindingSource(this.components);
             this.txtPaintCode = new System.Windows.Forms.TextBox();
             this.lblPaintCode = new System.Windows.Forms.Label();
             this.txtEngineCode = new System.Windows.Forms.TextBox();
@@ -53,10 +56,16 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.pbCar = new System.Windows.Forms.PictureBox();
+            this.epName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epLicensePlate = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsBrand)).BeginInit();
             this.gbIdentification.SuspendLayout();
             this.gbTechnical.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsFuelType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epLicensePlate)).BeginInit();
             this.SuspendLayout();
             // 
             // gbGeneral
@@ -77,11 +86,18 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             // 
             // cbBrand
             // 
+            this.cbBrand.DataSource = this.bsBrand;
+            this.cbBrand.DisplayMember = "Value";
             this.cbBrand.FormattingEnabled = true;
             this.cbBrand.Location = new System.Drawing.Point(230, 40);
             this.cbBrand.Name = "cbBrand";
             this.cbBrand.Size = new System.Drawing.Size(180, 28);
             this.cbBrand.TabIndex = 6;
+            this.cbBrand.ValueMember = "Id";
+            // 
+            // bsBrand
+            // 
+            this.bsBrand.DataSource = typeof(VehicleHistory.DataAccessLayer.Models.Dictionaries.BrandModel);
             // 
             // txtGeneration
             // 
@@ -131,7 +147,7 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             this.gbIdentification.Controls.Add(this.lblLicensePlate);
             this.gbIdentification.Controls.Add(this.lblProductionDate);
             this.gbIdentification.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.gbIdentification.Location = new System.Drawing.Point(474, 108);
+            this.gbIdentification.Location = new System.Drawing.Point(446, 108);
             this.gbIdentification.Name = "gbIdentification";
             this.gbIdentification.Size = new System.Drawing.Size(416, 159);
             this.gbIdentification.TabIndex = 3;
@@ -146,13 +162,16 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             this.dtpProductionDate.Name = "dtpProductionDate";
             this.dtpProductionDate.Size = new System.Drawing.Size(180, 27);
             this.dtpProductionDate.TabIndex = 6;
+            this.dtpProductionDate.ValueChanged += new System.EventHandler(this.dtpProductionDate_ValueChanged);
             // 
             // txtLicensePlate
             // 
             this.txtLicensePlate.Location = new System.Drawing.Point(230, 78);
+            this.txtLicensePlate.MaxLength = 7;
             this.txtLicensePlate.Name = "txtLicensePlate";
             this.txtLicensePlate.Size = new System.Drawing.Size(180, 27);
             this.txtLicensePlate.TabIndex = 5;
+            this.txtLicensePlate.Validated += new System.EventHandler(this.txtLicensePlate_Validated);
             // 
             // lblLicensePlate
             // 
@@ -200,11 +219,18 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             // 
             // cbFuelType
             // 
+            this.cbFuelType.DataSource = this.bsFuelType;
+            this.cbFuelType.DisplayMember = "Value";
             this.cbFuelType.FormattingEnabled = true;
             this.cbFuelType.Location = new System.Drawing.Point(230, 28);
             this.cbFuelType.Name = "cbFuelType";
             this.cbFuelType.Size = new System.Drawing.Size(180, 28);
             this.cbFuelType.TabIndex = 7;
+            this.cbFuelType.ValueMember = "Id";
+            // 
+            // bsFuelType
+            // 
+            this.bsFuelType.DataSource = typeof(VehicleHistory.DataAccessLayer.Models.Dictionaries.FuelTypeModel);
             // 
             // txtPaintCode
             // 
@@ -253,6 +279,7 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(180, 24);
             this.txtName.TabIndex = 6;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // btnSave
             // 
@@ -285,6 +312,15 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             this.pbCar.TabIndex = 7;
             this.pbCar.TabStop = false;
             // 
+            // epName
+            // 
+            this.epName.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.epName.ContainerControl = this;
+            // 
+            // epLicensePlate
+            // 
+            this.epLicensePlate.ContainerControl = this;
+            // 
             // CarAddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -304,11 +340,15 @@ namespace VehicleHistory.UserInterface.Forms.Cars
             this.Text = "Dodaj pojazd";
             this.gbGeneral.ResumeLayout(false);
             this.gbGeneral.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsBrand)).EndInit();
             this.gbIdentification.ResumeLayout(false);
             this.gbIdentification.PerformLayout();
             this.gbTechnical.ResumeLayout(false);
             this.gbTechnical.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsFuelType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epLicensePlate)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -340,5 +380,9 @@ namespace VehicleHistory.UserInterface.Forms.Cars
         private System.Windows.Forms.PictureBox pbCar;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.BindingSource bsBrand;
+        private System.Windows.Forms.BindingSource bsFuelType;
+        private System.Windows.Forms.ErrorProvider epName;
+        private System.Windows.Forms.ErrorProvider epLicensePlate;
     }
 }

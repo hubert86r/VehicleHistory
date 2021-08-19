@@ -114,6 +114,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Properties\DataSources\VehicleHistory.DataAccessLayer.Models.Dictionaries.BrandModel.datasource" />
+    <None Include="Properties\DataSources\VehicleHistory.DataAccessLayer.Models.Dictionaries.FuelTypeModel.datasource" />
     <None Include="Properties\DataSources\VehicleHistory.DataAccessLayer.ViewModel.CarViewModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
