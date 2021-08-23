@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VehicleHistory.DataAccessLayer.Models;
 using VehicleHistory.DataAccessLayer.Models.Dictionaries;
 using VehicleHistory.UserInterface.Forms.Template;
 
@@ -69,9 +70,24 @@ namespace VehicleHistory.UserInterface.Forms.Cars
         {
             if (ValidateForm())
             {
-
+                CarModel car = new CarModel()
+                {
+                    Name = txtName.Text,
+                    Brand = new BrandModel(cbBrand.Text),
+                    Model = txtModel.Text,
+                    Generation = txtGeneration.Text,
+                    ProductionDate = dtpProductionDate.Value,
+                    FuelType = new FuelTypeModel(cbFuelType.Text),
+                    LicensePlate = txtLicensePlate.Text,
+                    PaintCode = txtPaintCode.Text,
+                    EngineCode = txtEngineCode.Text
+                };
+                //car = CreateCar(car);
+                car.Id = 4;
+                
+                Close();
             }
-            Close();
+            
         }
 
         private bool ValidateForm()
