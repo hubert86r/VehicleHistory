@@ -15,6 +15,7 @@ namespace VehicleHistory.UserInterface.Forms.Cars
 {
     public partial class CarAddForm : TemplateAddEditForm
     {
+        public EventHandler ReloadCars;
         public CarAddForm()
         {
             InitializeComponent();
@@ -84,7 +85,9 @@ namespace VehicleHistory.UserInterface.Forms.Cars
                 };
                 //car = CreateCar(car);
                 car.Id = 4;
-                
+
+                ReloadCars?.Invoke(btnSave, new CarEventArgs(car));
+
                 Close();
             }
             

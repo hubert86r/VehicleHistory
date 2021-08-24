@@ -110,6 +110,17 @@ namespace VehicleHistory.UserInterface.Forms.Cars
         private void btnAdd_Click(object sender, EventArgs e)
         {
             CarAddForm frm = new CarAddForm();
+            frm.ReloadCars += (s, ea) =>
+            {
+                CarEventArgs eventArgs = ea as CarEventArgs;
+                if (eventArgs != null)
+                {
+                    CarViewModel car = MappingHelper.MapCarModelToCarViewModel( eventArgs.Car);
+                    bsCars.Add(car);
+                    dgvCars.ClearSelection();
+                    dgvCars.Rows[dgvCars.Rows.Count - 1].Selected = true;
+                }
+            };
             frm.ShowDialog();
         }
     }

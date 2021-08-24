@@ -52,6 +52,7 @@
     <Compile Include="Forms\Cars\CarAddForm.Designer.cs">
       <DependentUpon>CarAddForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\CarEventArgs.cs" />
     <Compile Include="Forms\Cars\CarsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,5 +173,6 @@
   <ItemGroup>
     <None Include="Resources\car2.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
